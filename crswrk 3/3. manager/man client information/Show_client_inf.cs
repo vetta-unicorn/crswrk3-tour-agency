@@ -33,7 +33,7 @@ namespace crswrk_3._3._manager.man_client_information
             ClientData allClients = new ClientData();
             allClients = allClients.ReadClientData(client_filePath);
 
-            label3.Text = allClients.ClientDataString(allClients);
+            label3.Text = allClients.ClientNameString(allClients);
         }
 
         // вывод полной информации о клиенте

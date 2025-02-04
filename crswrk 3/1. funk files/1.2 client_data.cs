@@ -138,5 +138,19 @@ namespace crswrk_3
 
             return st;
         }
+
+        public string ClientNameString(ClientData allClients)
+        {
+            string st = "All clients:\n";
+            int i = 1;
+            foreach(var client in allClients.Clients)
+            {
+                st += $"ID: {i}. Name: {client.name}\nBirthday: {Convert.ToString(client.birth_date)}\n" +
+                    $"Passport number: {client.pass_n}\n\n";
+                i++;
+            }
+
+            return st;
+        }
     }
 }
