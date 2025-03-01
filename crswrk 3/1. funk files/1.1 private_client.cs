@@ -25,7 +25,7 @@ namespace crswrk_3
 
         // Инициализация списка клиентов
 
-        public private_data()
+        public  private_data()
         {
             Chosen_tours = new TourCatalog(); // Инициализация Chosen_tours
             Chosen_payments = new payment(); // Инициализация Chosen_payments
