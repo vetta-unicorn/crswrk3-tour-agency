@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace crswrk_3
 {
@@ -40,7 +41,18 @@ namespace crswrk_3
 
             // чтение данных из формы
             string pass_name = Convert.ToString(textBox1.Text);
-            int password = Convert.ToInt32(textBox2.Text);
+            int password = -1;
+
+            try
+            { 
+                password = Convert.ToInt32(textBox2.Text);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Error: password must be a number. ",
+                    "Input Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             bool Flag = man_catalog.FindManager(pass_name, password, man_catalog);
 
