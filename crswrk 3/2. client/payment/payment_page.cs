@@ -30,11 +30,28 @@ namespace crswrk_3
         private void button4_Click(object sender, EventArgs e)
         {
             // считываем данные карты
-            long card_number = (long)Convert.ToDouble(textBox1.Text);
             string card_holder = Convert.ToString(textBox2.Text);
-            int card_month = Convert.ToInt32(textBox3.Text);
-            int card_year = Convert.ToInt32(textBox4.Text);
-            int cvc = Convert.ToInt32(textBox5.Text);
+
+            long card_number = -1;
+            int card_month = 0;
+            int card_year = 0;
+            int cvc = 0;
+
+            try
+            {
+                card_number = (long)Convert.ToDouble(textBox1.Text);
+                card_month = Convert.ToInt32(textBox3.Text);
+                card_year = Convert.ToInt32(textBox4.Text);
+                cvc = Convert.ToInt32(textBox5.Text);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Error: card number, cvc and date must be numbers. ",
+                    "Input Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
             DateOnly expiry_date = new DateOnly(card_year, card_month, 1);
 
             // считываем данные о клиенте из файла
@@ -114,5 +131,9 @@ namespace crswrk_3
 
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

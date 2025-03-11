@@ -44,10 +44,21 @@ namespace crswrk_3
             string filePath = "Client_data.json";
             ClientData allClients = new ClientData();
             allClients = allClients.ReadClientData(filePath);
+            string pass_name = "";
+            int password = -1;
 
             // чтение данных из формы
-            string pass_name = Convert.ToString(textBox1.Text);
-            int password = Convert.ToInt32(textBox2.Text);
+            try
+            {
+                pass_name = Convert.ToString(textBox1.Text);
+                password = Convert.ToInt32(textBox2.Text);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Error: the password must be a number ", "Input Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
             bool Flag = allClients.FindClient(pass_name, password, allClients);
 
@@ -72,6 +83,11 @@ namespace crswrk_3
             this.Hide();
             var form2 = new Form2();
             form2.Show();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

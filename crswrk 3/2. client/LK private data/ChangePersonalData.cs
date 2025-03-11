@@ -68,9 +68,22 @@ namespace crswrk_3
             int index = allClients.ClientIndex(current_client.name, current_client.pass_n, allClients);
 
             // считываем новую дату рождения
-            int year_b = Convert.ToInt32(textBox2.Text);
-            int month_b = Convert.ToInt32(textBox3.Text);
-            int day_b = Convert.ToInt32(textBox4.Text);
+            int year_b = 0;
+            int month_b = 0;
+            int day_b = 0;
+
+            try
+            {
+                year_b = Convert.ToInt32(textBox2.Text);
+                month_b = Convert.ToInt32(textBox6.Text);
+                day_b = Convert.ToInt32(textBox7.Text);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Error: day, month and year must be numbers. ",
+                    "Input Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             DateOnly birth_date = new DateOnly(year_b, month_b, day_b);
 
@@ -105,8 +118,20 @@ namespace crswrk_3
             int index = allClients.ClientIndex(current_client.name, current_client.pass_n, allClients);
 
             // считываем новые паспортные данные
-            int pass_s = Convert.ToInt32(textBox5.Text);
-            int pass_n = Convert.ToInt32(textBox6.Text);
+            int pass_s = -1;
+            int pass_n = -1;
+
+            try
+            {
+                pass_s = Convert.ToInt32(textBox3.Text);
+                pass_n = Convert.ToInt32(textBox8.Text);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Error: passport number and series must be numbers. ",
+                    "Input Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             current_client.pass_s = pass_s;
             current_client.pass_n = pass_n;
@@ -140,9 +165,22 @@ namespace crswrk_3
             int index = allClients.ClientIndex(current_client.name, current_client.pass_n, allClients);
 
             // считываем новые паспортные данные
-            int year_pass = Convert.ToInt32(textBox7.Text);
-            int month_pass = Convert.ToInt32(textBox8.Text);
-            int day_pass = Convert.ToInt32(textBox10.Text);
+            int year_pass = 0;
+            int month_pass = 0;
+            int day_pass = 0;
+
+            try
+            {
+                year_pass = Convert.ToInt32(textBox4.Text);
+                month_pass = Convert.ToInt32(textBox9.Text);
+                day_pass = Convert.ToInt32(textBox10.Text);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Error: day, month and year must be numbers. ",
+                    "Input Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             DateOnly pass_date = new DateOnly(year_pass, month_pass, day_pass);
 
